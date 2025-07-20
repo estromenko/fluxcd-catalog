@@ -1,0 +1,16 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: main-cluster
+  namespace: postgresql-cluster
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5-standard-bookworm
+  storage:
+    size: 40Gi
+  managed:
+    roles:
+    - name: visionai
+      ensure: present
+      passwordSecret:
+        name: postgresql-cluster-user

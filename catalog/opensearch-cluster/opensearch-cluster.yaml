@@ -1,0 +1,22 @@
+apiVersion: opensearch.opster.io/v1
+kind: OpenSearchCluster
+metadata:
+  name: opensearch-cluster
+  namespace: opensearch-cluster
+spec:
+  general:
+    serviceName: opensearch-cluster
+    version: 2.3.0
+    setVMMaxMapCount: true
+  nodePools:
+    - component: nodes
+      replicas: 3
+      diskSize: "20Gi"
+      nodeSelector: {}
+      resources:
+         limits:
+            memory: "1Gi"
+            cpu: "500m"
+      roles:
+        - "cluster_manager"
+        - "data"
