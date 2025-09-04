@@ -24,6 +24,8 @@ spec:
       enabled: false
     clickhouse:
       replicasCount: 3
+      persistence:
+        size: 30Gi
     keeper:
       enabled: true
       replicaCount: 3
