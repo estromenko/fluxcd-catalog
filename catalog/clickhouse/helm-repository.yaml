@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: clickhouse
+  namespace: clickhouse
+spec:
+  interval: 120m
+  url: https://helm.altinity.com

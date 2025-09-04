@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: clickhouse
+  namespace: clickhouse
+spec:
+  releaseName: clickhouse
+  interval: 15m
+  chart:
+    spec:
+      chart: clickhouse
+      version: "0.3.1"
+      sourceRef:
+        kind: HelmRepository
+        name: clickhouse
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    operator:
+      enabled: false
+    clickhouse:
+      replicasCount: 3
+    keeper:
+      enabled: true
+      replicaCount: 3
