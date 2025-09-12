@@ -1,0 +1,19 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: s3-store
+  namespace: postgresql-cluster
+spec:
+  retentionPolicy: 7d
+  configuration:
+    destinationPath: s3://postgres-backups/
+    endpointURL: https://s3.twcstorage.ru
+    s3Credentials:
+      accessKeyId:
+        name: s3-creds
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: s3-creds
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip

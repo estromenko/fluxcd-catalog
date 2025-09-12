@@ -1,0 +1,15 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Pooler
+metadata:
+  name: main-cluster-pooler-rw
+  namespace: postgresql-cluster
+spec:
+  cluster:
+    name: main-cluster
+  instances: 3
+  type: rw
+  pgbouncer:
+    poolMode: transaction
+    parameters:
+      max_client_conn: "1000"
+      default_pool_size: "24"

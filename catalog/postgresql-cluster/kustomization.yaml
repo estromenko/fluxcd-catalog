@@ -4,3 +4,7 @@ resources:
   - namespace.yaml
   - secret.yaml
   - postgresql-cluster.yaml
+  - object-storage.yaml
+  - s3-creds-secret.yaml
+  - scheduled-backup.yaml
+  - pooler.yaml
