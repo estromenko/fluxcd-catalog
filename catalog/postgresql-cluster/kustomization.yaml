@@ -8,3 +8,4 @@ resources:
   - s3-creds-secret.yaml
   - scheduled-backup.yaml
   - pooler.yaml
+  - postgresql-database.yaml

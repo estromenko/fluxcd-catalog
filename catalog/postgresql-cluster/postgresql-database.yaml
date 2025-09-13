@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: main-database
+  namespace: postgresql-cluster
+spec:
+  name: backend
+  owner: visionai
+  cluster:
+    name: main-cluster
