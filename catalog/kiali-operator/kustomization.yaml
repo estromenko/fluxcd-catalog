@@ -4,4 +4,3 @@ resources:
   - namespace.yaml
   - helm-repository.yaml
   - helm-release.yaml
-  - peer-authentication.yaml
