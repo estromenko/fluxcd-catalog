@@ -17,3 +17,7 @@ spec:
   values:
     vector:
       enabled: true
+    server:
+      persistentVolume:
+        storageClassName: nvme.network-drives.csi.timeweb.cloud
+        size: "20Gi"

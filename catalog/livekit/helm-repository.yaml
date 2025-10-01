@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: valkey
-  namespace: valkey
+  name: livekit
+  namespace: livekit
 spec:
   interval: 24h
-  url: https://valkey.io/valkey-helm/
+  url: https://helm.livekit.io

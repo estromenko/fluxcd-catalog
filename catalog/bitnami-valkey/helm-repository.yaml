@@ -1,8 +1,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: valkey
+  name: bitnamicharts
   namespace: valkey
 spec:
   interval: 24h
-  url: https://valkey.io/valkey-helm/
+  url: oci://registry-1.docker.io/bitnamicharts
+  type: oci

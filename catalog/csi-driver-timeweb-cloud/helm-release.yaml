@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: csi-driver-timeweb-cloud
+  namespace: csi-driver-timeweb-cloud
+spec:
+  releaseName: csi-driver-timeweb-cloud
+  chart:
+    spec:
+      chart: csi-driver-timeweb-cloud
+      version: 2.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: csi-driver-timeweb-cloud
+        namespace: csi-driver-timeweb-cloud
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    TW_API_SECRET: "secret"
+    TW_CLUSTER_ID: "123123"

@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: csi-driver-timeweb-cloud
+  namespace: csi-driver-timeweb-cloud
+spec:
+  interval: 120m
+  url: oci://cr-internal.twcstorage.ru/network-drives-csi
+  type: oci

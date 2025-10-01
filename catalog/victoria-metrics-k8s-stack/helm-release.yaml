@@ -14,3 +14,14 @@ spec:
         name: vm
         namespace: vm-stack
       interval: 24h
+  values:
+    vmsingle:
+      spec:
+        storage:
+          storageClassName: nvme.network-drives.csi.timeweb.cloud
+          size: "30Gi"
+    grafana:
+      persistence:
+        enabled: true
+        storageClassName: nvme.network-drives.csi.timeweb.cloud
+        size: "2Gi"
