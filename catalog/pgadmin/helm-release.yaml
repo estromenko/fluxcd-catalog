@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pgadmin4
+  namespace: pgadmin
+spec:
+  releaseName: pgadmin4
+  chart:
+    spec:
+      chart: pgadmin4
+      version: "1.50.0"
+      sourceRef:
+        kind: HelmRepository
+        name: runix
+        namespace: pgadmin
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    env:
+      email: chart@domain.com
+      password: SuperSecret
