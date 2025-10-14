@@ -4,3 +4,8 @@ resources:
   - namespace.yaml
   - helm-repository.yaml
   - helm-release.yaml
+  - gateway.yaml
+  - http-route-https-redirect.yaml
+  - tcp-route.yaml
+  - turn-http-route.yaml
+  - turn-tcp-route.yaml

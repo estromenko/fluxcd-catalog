@@ -1,0 +1,46 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: livekit-gateway
+  namespace: livekit
+  annotations:
+    cert-manager.io/issuer: livekit-gateway-letsencrypt
+spec:
+  gatewayClassName: livekit-gateway-class
+  listeners:
+    - name: tcp
+      hostname: turn.myhost.com
+      protocol: TLS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: livekit-gateway-letsencrypt-tls
+    - name: http
+      hostname: turn.myhost.com
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: turn
+      hostname: turn.myhost.com
+      protocol: TLS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: livekit-gateway-letsencrypt-tls
+    - name: turn-http
+      hostname: turn.myhost.com
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All

@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: livekit-gateway-turn-http-route
+  namespace: livekit
+spec:
+  parentRefs:
+    - namespace: livekit
+      name: livekit-gateway
+      sectionName: turn-http
+  hostnames:
+    - turn.myhost.com
+  rules:
+    - backendRefs:
+        - name: livekit-livekit-server-turn
+          port: 443

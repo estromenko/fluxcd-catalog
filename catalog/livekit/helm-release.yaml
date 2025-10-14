@@ -15,16 +15,18 @@ spec:
         namespace: livekit
       interval: 24h
   values:
-    replicaCount: 2
-    podHostNetwork: false
+    replicaCount: 1
     livekit:
       rtc:
         use_external_ip: true
       turn:
         enabled: true
         domain: turn.myhost.com
-        tls_port: 7881
-        udp_port: 7882
+        tls_port: 3478
+        udp_port: 3478
         external_tls: true
+        serviceType: ClusterIP
+      redis:
+        address: valkey.valkey:6379
       keys:
         myapikey: "myapisecret"

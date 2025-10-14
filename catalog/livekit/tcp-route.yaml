@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: livekit-gateway-route
+  namespace: livekit
+spec:
+  parentRefs:
+    - namespace: livekit
+      name: livekit-gateway
+      sectionName: tcp
+  rules:
+    - backendRefs:
+        - name: livekit-livekit-server
+          port: 80
