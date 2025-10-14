@@ -26,6 +26,9 @@ spec:
       replicasCount: 3
       persistence:
         size: 30Gi
+      image:
+        repository: "clickhouse"
+        tag: "25.9.3.48-jammy"
     keeper:
       enabled: true
       replicaCount: 3
