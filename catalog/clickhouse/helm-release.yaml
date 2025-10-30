@@ -28,7 +28,7 @@ spec:
         size: 30Gi
       image:
         repository: "clickhouse"
-        tag: "25.9.4.58-jammy"
+        tag: "25.9.5.21-jammy"
     keeper:
       enabled: true
       replicaCount: 3
