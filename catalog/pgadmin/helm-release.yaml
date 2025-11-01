@@ -18,6 +18,14 @@ spec:
     remediation:
       retries: 3
   values:
-    env:
-      email: chart@domain.com
-      password: SuperSecret
+    extraConfigmapMounts:
+      - name: config-local
+        configMap: pgadmin4-config
+        subPath: config_local.py
+        mountPath: "/pgadmin4/config_local.py"
+        readOnly: true
+    envVarsFromSecrets:
+      - pgadmin4-oauth2-secret
+    persistentVolume:
+      storageClass: "nvme.network-drives.csi.timeweb.cloud"
+      size: "2Gi"

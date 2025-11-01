@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgadmin4-config
+  namespace: pgadmin
+data:
+  config_local.py: |-
+    import os
+
+    MASTER_PASSWORD_REQUIRED = True
+    AUTHENTICATION_SOURCES = ['oauth2']
+    OAUTH2_AUTO_CREATE_USER = True
+    OAUTH2_CONFIG = [
+      {
+          'OAUTH2_NAME': 'gitea',
+          'OAUTH2_DISPLAY_NAME': 'Gitea Login',
+          'OAUTH2_CLIENT_ID': os.environ['OAUTH2_CLIENT_ID'],
+          'OAUTH2_CLIENT_SECRET': os.environ['OAUTH2_CLIENT_SECRET'],
+          'OAUTH2_TOKEN_URL': 'https://gitea.myhost.ru/login/oauth/access_token',
+          'OAUTH2_AUTHORIZATION_URL': 'https://gitea.myhost.ru/login/oauth/authorize',
+          'OAUTH2_API_BASE_URL': 'https://gitea.myhost.ru/api/v1/',
+          'OAUTH2_USERINFO_ENDPOINT': 'user',
+          'OAUTH2_ICON': 'fa-github',
+          'OAUTH2_BUTTON_COLOR': '#0000ff',
+      },
+    ]
