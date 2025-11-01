@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: qdrant
+  namespace: qdrant
+spec:
+  releaseName: qdrant
+  interval: 5m
+  chart:
+    spec:
+      chart: qdrant
+      version: "1.15.5"
+      sourceRef:
+        kind: HelmRepository
+        name: qdrant
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    persistence:
+      size: "5Gi"
+      storageClassName: nvme.network-drives.csi.timeweb.cloud
