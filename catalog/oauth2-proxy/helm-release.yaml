@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: oauth2-proxy
+  namespace: oauth2-proxy
+spec:
+  releaseName: oauth2-proxy
+  chart:
+    spec:
+      chart: oauth2-proxy
+      version: "8.3.2"
+      sourceRef:
+        kind: HelmRepository
+        name: oauth2-proxy
+        namespace: oauth2-proxy
+  interval: 1m
+  install:
+    remediation:
+      retries: 3
+  values:
+    config:
+      existingSecret: oauth2-proxy
+      configFile: |-
+        provider = "github"
+        redirect_url = "https://gitea.myhost.ru/oauth2/callback"
+        provider_display_name = "Gitea"
+        login_url = "https://gitea.myhost.ru/login/oauth/authorize"
+        redeem_url = "https://gitea.myhost.ru/login/oauth/access_token"
+        validate_url = "https://gitea.myhost.ru/api/v1/user/emails"
+        skip_provider_button = true
+        email_domains = ["*"]
+        upstreams = ["http://myapp.myappns:8000/"]
