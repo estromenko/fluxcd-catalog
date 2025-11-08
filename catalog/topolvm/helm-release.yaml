@@ -22,5 +22,7 @@ spec:
       replicaCount: 1
     node:
       lvmdEmbedded: true
+      # For k0s uncomment line below
+      # kubeletWorkDirectory: "/var/lib/k0s/kubelet"
     lvmd:
       managed: false
