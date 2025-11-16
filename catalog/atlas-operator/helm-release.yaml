@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: atlas-operator
-      version: "0.7.11"
+      version: "0.7.13"
       sourceRef:
         kind: HelmRepository
         name: atlas-operator
