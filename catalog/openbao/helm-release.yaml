@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: openbao
+  namespace: openbao
+spec:
+  interval: 24h
+  chart:
+    spec:
+      chart: openbao
+      version: "0.4.0"
+      sourceRef:
+        kind: HelmRepository
+        name: openbao
+        namespace: openbao
+      interval: 24h
+  values:
+    server:
+      ha:
+        enabled: true
+        replicas: 1
+        raft:
+          enabled: true
+          setNodeId: true
+      ui:
+        enabled: true
