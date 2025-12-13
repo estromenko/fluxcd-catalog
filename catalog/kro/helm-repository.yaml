@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: kro
+  namespace: kro
+spec:
+  interval: 120m
+  url: oci://registry.k8s.io/kro/charts
+  type: oci
